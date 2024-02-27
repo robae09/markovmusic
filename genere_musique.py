@@ -152,10 +152,10 @@ def chords_to_midi(chord_sequence, output_file="output.mid"):
 
     # Convert chord sequence to MIDI notes and add to MIDIFile
     for chord_name in chord_sequence:
-        print(chord_name)
+        # print(chord_name)
         if chord_name in chord_mapping:
             for note in chord_mapping[chord_name]:
-                print(note)
+                # print(note)
                 midi.addNote(track, 0, note, time, quarter_note_duration, 100)  # Add note to track
             time += quarter_note_duration
 
@@ -166,7 +166,7 @@ def chords_to_midi(chord_sequence, output_file="output.mid"):
     print("MIDI file generated successfully:", output_file)
 
 # Your chord sequence
-chord_sequence = generate_sequence(input("Donner une la première note parmis celles disponnibles ('F','Em7','A7','Dm','Dm7','Bb','C7','C','G7','A7sus4','Gm6','Fsus4'): "))
+chord_sequence = generate_sequence(input("Donner une la première note parmis celles disponnibles : "))
 # print(chord_sequence)
 # Convert the chord sequence to MIDI
 chords_to_midi(chord_sequence, "output.mid")
