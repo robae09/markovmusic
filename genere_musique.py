@@ -2,6 +2,7 @@ from midiutil import MIDIFile
 import numpy as np
 import pandas as pd
 from collections import Counter
+import sys
 #np.random.seed(42)
 
 
@@ -88,7 +89,6 @@ for chanson in data_2:
     temp = [" ".join(ngram) for ngram in ngrams]
     bigrams.extend(temp)
 
-print(bigrams)
 
 
 # data = pd.read_csv('Liverpool_band_chord_sequence.csv')
@@ -166,7 +166,11 @@ def chords_to_midi(chord_sequence, output_file="output.mid"):
     print("MIDI file generated successfully:", output_file)
 
 # Your chord sequence
-chord_sequence = generate_sequence(input("Donner une la première note parmis celles disponnibles : "))
+if len(sys.argv) > 1:
+    chord_sequence = generate_sequence(sys.argv[1])
+else:
+    print(bigrams)
+    chord_sequence = generate_sequence(input("Donner une la première note parmis celles disponnibles : "))
 # print(chord_sequence)
 # Convert the chord sequence to MIDI
 chords_to_midi(chord_sequence, "output.mid")
